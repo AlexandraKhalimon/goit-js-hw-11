@@ -33,13 +33,32 @@ export function createGallery(images) {
     ).join("");
 }
 
-const galleryModal = new SimpleLightbox(`.gallery a`, {
-    captionsData: "alt",
-    captionsDelay: 250
-});
+let lightbox = null;
 
-galleryModal.refresh();
-
-function clearGallery() {
-    
+export function lightboxModal() {
+    if (lightbox) {
+        return lightbox.refresh();
+    } else {
+        const galleryModal = new SimpleLightbox(`.gallery a`, {
+            captionsData: "alt",
+            captionDelay: 250,
+        })
+    }
 }
+
+// export const galleryModal = new SimpleLightbox(`.gallery a`, {
+//     captionsData: "alt",
+//     captionDelay: 250,
+// })
+
+
+// const galleryModal = new SimpleLightbox(`.gallery a`, {
+//     captionsData: "alt",
+//     captionsDelay: 250
+// });
+
+// galleryModal.refresh();
+
+// function clearGallery() {
+    
+// }

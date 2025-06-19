@@ -1,5 +1,5 @@
 import { getImagesByQuery } from "./js/pixabay-api";
-import { createGallery } from "./js/render-functions";
+import { createGallery, lightboxModal } from "./js/render-functions";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
@@ -24,6 +24,8 @@ function handleSubmit(event) {
             }
             console.log(response.hits);
             galleryList.insertAdjacentHTML("beforeend", createGallery(response.hits));
+
+            lightboxModal();
             
         })
         .catch(error => {
@@ -31,6 +33,3 @@ function handleSubmit(event) {
         
     })
 }
-
-// galleryList.insertAdjacentHTML("beforeend", createGallery());
-
