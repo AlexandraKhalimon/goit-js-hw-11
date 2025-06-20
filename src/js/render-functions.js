@@ -33,32 +33,30 @@ export function createGallery(images) {
     ).join("");
 }
 
-let lightbox = null;
+let galleryModal = null;
 
 export function lightboxModal() {
-    if (lightbox) {
-        return lightbox.refresh();
+    if (galleryModal) {
+        return galleryModal.refresh();
     } else {
-        const galleryModal = new SimpleLightbox(`.gallery a`, {
+        galleryModal = new SimpleLightbox(`.gallery a`, {
             captionsData: "alt",
             captionDelay: 250,
         })
     }
 }
 
-// export const galleryModal = new SimpleLightbox(`.gallery a`, {
-//     captionsData: "alt",
-//     captionDelay: 250,
-// })
+export function clearGallery() {
+    const gallery = document.querySelector(".gallery");
+    gallery.innerHTML = "";
+};
 
+export function showLoader() {
+    const loader = document.querySelector(".loader");
+    loader.classList.remove("hidden");
+};
 
-// const galleryModal = new SimpleLightbox(`.gallery a`, {
-//     captionsData: "alt",
-//     captionsDelay: 250
-// });
-
-// galleryModal.refresh();
-
-// function clearGallery() {
-    
-// }
+export function hideLoader() {
+    const loader = document.querySelector(".loader");
+    loader.classList.add("hidden");
+}
