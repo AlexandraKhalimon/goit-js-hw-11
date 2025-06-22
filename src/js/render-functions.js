@@ -2,7 +2,9 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 export function createGallery(images) {
-    return images.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => 
+    const galleryList = document.querySelector(".gallery");
+    
+    const galleryMarkup = images.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => 
         `<li class="list-item">
             <div class="card">
                 <a class="card-link" href="${largeImageURL}">
@@ -31,6 +33,9 @@ export function createGallery(images) {
             </div>
         </li>`
     ).join("");
+
+    galleryList.innerHTML = galleryMarkup;
+    lightboxModal();
 }
 
 let galleryModal = null;

@@ -4,8 +4,8 @@ import axios from "axios";
     const API_KEY = "50859517-961673cab883b3cd43a6fc51d";
       return axios.get("https://pixabay.com/api/", {
          params: {
-             key: `${API_KEY}`,
-             q: `${query}`,
+             key: API_KEY,
+             q: query,
              image_type: "photo",
              orientation: "horizontal",
              safesearch: true
