@@ -13,6 +13,14 @@ function handleSubmit(event) {
 
     const query = searchInput.value.trim();
 
+    if (!query) {
+        iziToast.warning({
+            message: "Sorry, fill in the search query to start work.",
+            position: "topRight"
+        });
+        return;
+    }
+
     showLoader();
     clearGallery();
     getImagesByQuery(query)
@@ -29,6 +37,11 @@ function handleSubmit(event) {
         })
         .catch(error => {
             console.log(error.message);
+            iziToast.error({
+                message: `Error:${error.message}`,
+                color: "red",
+                position: "topRight"
+            });
         })
         .finally(() => {
             hideLoader();
